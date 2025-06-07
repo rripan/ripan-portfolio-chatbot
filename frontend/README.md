@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Ripan's Portfolio Chatbot
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a full-stack portfolio chatbot project that acts as a conversational assistant for Ripandeep Kaur (Ripan). It is designed to answer questions about Ripan’s background, technical skills, projects, education, interests, and more—through natural, conversational interactions.
 
-## Available Scripts
+## Purpose
 
-In the project directory, you can run:
+The goal of this project is to:
 
-### `npm start`
+- Provide an interactive way for people (recruiters, professors, peers) to learn about Ripan.
+- Showcase her professional experience, academic journey, and technical expertise through a fun chatbot interface.
+- Explore full-stack development and the integration of LLMs like Gemini with custom conversational logic.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend
+- **React**: Used to build a dynamic, responsive user interface.
+- **CSS**: Custom styling inspired by modern portfolio aesthetics (blue vintage type, tile-like patterns).
+- **Fetch API**: Used to communicate with the backend via HTTP POST requests.
 
-### `npm test`
+### Backend
+- **Flask** (Python): Lightweight web framework to handle chat requests and serve the Gemini model responses.
+- **Google Generative AI SDK** (`google.generativeai`): Official Python SDK to access the Gemini 1.5 Flash model for generating chatbot responses.
+- **Flask-CORS**: Middleware to allow cross-origin requests from the frontend.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Environment Management
+- **Python Virtual Environment**: Isolated backend environment.
+- **`.env` File**: Stores API key securely and is excluded from version control using `.gitignore`.
 
-### `npm run build`
+## Key Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Natural Language Chatbot**: Users can ask any question about Ripan’s experience, education, or interests.
+- **System-Prompt Customization**: The assistant responds with personality, prioritizes recent experience, and reacts to specific triggers (e.g., defending FC Barcelona).
+- **Persistent Conversation State**: Conversations are maintained using `start_chat()` sessions.
+- **Predefined Prompt Buttons**: On launch, users can choose from common prompt categories (e.g., “See her projects”, “What are her interests?”).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Security Notes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- The Google API key is stored in a `.env` file and not committed to the repository.
+- A `.gitignore` is used to ensure sensitive files (like `vertex-key.json`) are excluded from version control.
+- Push protection is enforced to prevent secrets from being leaked.
 
-### `npm run eject`
+Here's the corrected and cleanly formatted **"Getting Started"** section for your `README.md`:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. Clone the Repo
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+git clone https://github.com/rripan/ripan-portfolio-chatbot.git
+cd ripan-portfolio-chatbot
+```
 
-## Learn More
+### 2. Set Up Backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate  # For Mac/Linux
+# On Windows: venv\Scripts\activate
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+pip install -r requirements.txt
 
-### Code Splitting
+# Create a .env file and add your Gemini API key
+echo "GEMINI_API_KEY=your_api_key_here" > .env
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Run the Flask server
+python main.py
+```
 
-### Analyzing the Bundle Size
+### 3. Set Up Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+cd ../frontend
+npm install
+npm start
+```
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* The React frontend will run at `http://localhost:3000`
+* The Flask backend runs at `http://localhost:5000`
