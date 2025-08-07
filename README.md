@@ -1,32 +1,81 @@
+# Ripan's Portfolio Chatbot
 
-# Portfolio Chatbot
+This is a full-stack portfolio chatbot project that acts as a conversational assistant for Ripandeep Kaur (Ripan). It is designed to answer questions about Ripan’s background, technical skills, projects, education, interests, and more—through natural, conversational interactions.
 
-This is a personal chatbot built from scratch for my personal website using Flask, Python, and the Gemini API. The chatbot is designed to provide conversational assistance and interact with users in a simple and intuitive way.
+## Purpose
 
-## Features
+The goal of this project is to:
 
-* Lightweight and easy-to-use chatbot integrated into a personal website
-* Built with Flask for backend web server
-* Uses Gemini API for natural language processing and responses
-* Simple and clean frontend for chatting with the bot
-* Easily customizable to add new features or improve conversational abilities
+- Provide an interactive way for people (recruiters, professors, peers) to learn about Ripan.
+- Showcase her professional experience, academic journey, and technical expertise through a fun chatbot interface.
+- Explore full-stack development and the integration of LLMs like Gemini with custom conversational logic.
+
+## Tech Stack
+
+### Frontend
+- **React**: Used to build a dynamic, responsive user interface.
+- **CSS**: Custom styling inspired by modern portfolio aesthetics (blue vintage type, tile-like patterns).
+- **Fetch API**: Used to communicate with the backend via HTTP POST requests.
+
+### Backend
+- **Flask** (Python): Lightweight web framework to handle chat requests and serve the Gemini model responses.
+- **Google Generative AI SDK** (`google.generativeai`): Official Python SDK to access the Gemini 1.5 Flash model for generating chatbot responses.
+- **Flask-CORS**: Middleware to allow cross-origin requests from the frontend.
+
+### Environment Management
+- **Python Virtual Environment**: Isolated backend environment.
+- **`.env` File**: Stores API key securely and is excluded from version control using `.gitignore`.
+
+## Key Features
+
+- **Natural Language Chatbot**: Users can ask any question about Ripan’s experience, education, or interests.
+- **System-Prompt Customization**: The assistant responds with personality, prioritizes recent experience, and reacts to specific triggers (e.g., defending FC Barcelona).
+- **Persistent Conversation State**: Conversations are maintained using `start_chat()` sessions.
+- **Predefined Prompt Buttons**: On launch, users can choose from common prompt categories (e.g., “See her projects”, “What are her interests?”).
+
+## Security Notes
+
+- The Google API key is stored in a `.env` file and not committed to the repository.
+- A `.gitignore` is used to ensure sensitive files (like `vertex-key.json`) are excluded from version control.
+- Push protection is enforced to prevent secrets from being leaked.
+
+Here's the corrected and cleanly formatted **"Getting Started"** section for your `README.md`:
+
+---
 
 ## Getting Started
 
-### Prerequisites
+### 1. Clone the Repo
 
-* Python 3.8 or higher
-* Flask
-* Requests (or other HTTP client if used for Gemini API)
-* Gemini API key (you need to get access and set up API credentials)
+```bash
+git clone https://github.com/rripan/ripan-portfolio-chatbot.git
+cd ripan-portfolio-chatbot
+```
 
+### 2. Set Up Backend
 
-## Contributing
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate  # For Mac/Linux
+# On Windows: venv\Scripts\activate
 
-This is a personal project but feel free to fork and improve it!
+pip install -r requirements.txt
 
-## License
+# Create a .env file and add your Gemini API key
+echo "GEMINI_API_KEY=your_api_key_here" > .env
 
-This project is licensed under the MIT License.
+# Run the Flask server
+python main.py
+```
 
----
+### 3. Set Up Frontend
+
+```bash
+cd ../frontend
+npm install
+npm start
+```
+
+* The React frontend will run at `http://localhost:3000`
+* The Flask backend runs at `http://localhost:5000`
